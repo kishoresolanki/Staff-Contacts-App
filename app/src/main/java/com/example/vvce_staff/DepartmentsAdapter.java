@@ -1,0 +1,60 @@
+package com.example.vvce_staff;
+
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+
+public class DepartmentsAdapter extends RecyclerView.Adapter<DepartmentsAdapter.departmentViewholder> {
+    private int listItemLayout;
+    private ArrayList<Departments> mCustomObjects;
+    final private ListItemOnClickListener mListItemOnClickListener;
+
+
+
+    public interface ListItemOnClickListener{
+        void onListItemClick(int position);
+    }
+
+    public DepartmentsAdapter(int layoutId, ArrayList<Departments> arrayList, ListItemOnClickListener listItemOnClickListener){
+        listItemLayout =layoutId;
+        mListItemOnClickListener=listItemOnClickListener;
+        mCustomObjects =arrayList;
+    }
+    @Override
+    public departmentViewholder onCreateViewHolder( ViewGroup viewGroup, int i) {
+        return null;
+    }
+
+    @Override
+    public void onBindViewHolder( departmentViewholder departmentViewholder, int i) {
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return 0;
+    }
+
+    class departmentViewholder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        TextView DepartmentTextView;
+
+        public departmentViewholder(View itemView) {
+
+            super(itemView);
+            DepartmentTextView = itemView.findViewById(R.id.departmentTextView);
+            itemView.setOnClickListener(this);
+
+        }
+
+
+        @Override
+        public void onClick(View v) {
+            int clickedPosition = getAdapterPosition();
+            mListItemOnClickListener.onListItemClick(clickedPosition);
+        }
+    }
+}
