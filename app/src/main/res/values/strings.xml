@@ -1,9 +1,18 @@
 <resources>
     <string name="app_name">VVCE-STAFF</string>
+
     <string name="login">Login</string>
     <string name="register">Register</string>
+    <string name="sign_in">Sign In</string>
+
     <string name="faculty">Faculty</string>
     <string name="student">Student</string>
+
     <string name="email_hint">Email ID</string>
     <string name="password_hint">Password</string>
+    <string name="confirm_password_hint">Confirm Password</string>
+    <string name="name_hint">Full Name</string>
+    <string name="faculty_id_hint">Faculty ID</string>
+    <string name="designation_hint">Designation</string>
+    <string name="usn_hint">USN</string>
 </resources>
