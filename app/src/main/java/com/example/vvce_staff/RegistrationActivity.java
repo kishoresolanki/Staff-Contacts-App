@@ -84,6 +84,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 if(!password.equals(confirmPassword)){
                     Toast.makeText(RegistrationActivity.this, "Passwords don't match", Toast.LENGTH_SHORT).show();
                 }
+                
             }
         });
     }
