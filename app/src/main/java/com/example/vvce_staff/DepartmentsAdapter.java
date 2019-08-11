@@ -2,6 +2,7 @@ package com.example.vvce_staff;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -26,17 +27,19 @@ public class DepartmentsAdapter extends RecyclerView.Adapter<DepartmentsAdapter.
     }
     @Override
     public departmentViewholder onCreateViewHolder( ViewGroup viewGroup, int i) {
-        return null;
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(listItemLayout, viewGroup, false);
+        return new departmentViewholder(view);
     }
 
     @Override
     public void onBindViewHolder( departmentViewholder departmentViewholder, int i) {
-
+        TextView item = departmentViewholder.DepartmentTextView;
+        item.setText(mCustomObjects.get(i).getDepartmentName());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mCustomObjects.size();
     }
 
     class departmentViewholder extends RecyclerView.ViewHolder implements View.OnClickListener {

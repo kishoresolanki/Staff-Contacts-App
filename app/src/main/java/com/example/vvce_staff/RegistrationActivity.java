@@ -1,5 +1,6 @@
 package com.example.vvce_staff;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
+
+import com.example.vvce_staff.networkUtils.DepartmentsActivity;
 
 public class RegistrationActivity extends AppCompatActivity {
     EditText fullNameEt,emailEt,passwordEt,confirmPasswordEt;
@@ -70,10 +73,14 @@ public class RegistrationActivity extends AppCompatActivity {
                     password = passwordEt.getText().toString();
                     confirmPassword = confirmPasswordEt.getText().toString();
 
+
                 } catch (Exception e){
                     Toast.makeText(RegistrationActivity.this, "Error", Toast.LENGTH_SHORT).show();
                 }
-                
+                if(password.equals(confirmPassword)){
+                    Intent intent = new Intent(RegistrationActivity.this, DepartmentsActivity.class);
+                    startActivity(intent);
+                }
                 if(!password.equals(confirmPassword)){
                     Toast.makeText(RegistrationActivity.this, "Passwords don't match", Toast.LENGTH_SHORT).show();
                 }
