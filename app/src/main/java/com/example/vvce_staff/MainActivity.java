@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -19,8 +20,10 @@ import com.google.firebase.auth.FirebaseAuth;
 public class MainActivity extends AppCompatActivity {
     EditText emailEt,passEt;
     RadioGroup usersRg;
+    RadioButton studentRB,FacultyRB;
     Button loginBtn,registerBtn,signInBtn;
     private String emailId,password;
+    private int def_value;
 
     private FirebaseAuth mAuth;
 
@@ -37,8 +40,16 @@ public class MainActivity extends AppCompatActivity {
         loginBtn = findViewById(R.id.login_btn);
         registerBtn = findViewById(R.id.register_btn);
         signInBtn = findViewById(R.id.sign_in_btn);
+        studentRB = findViewById(R.id.student_rb);
+        FacultyRB = findViewById(R.id.faculty_rb);
 
         mAuth = FirebaseAuth.getInstance();
+        if(studentRB.isChecked()){
+            def_value = 1;
+        }
+        else if(FacultyRB.isChecked()){
+            def_value = 0;
+        }
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
