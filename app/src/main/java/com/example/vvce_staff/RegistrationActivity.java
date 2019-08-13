@@ -6,12 +6,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class RegistrationActivity extends AppCompatActivity {
     EditText fullNameEt,emailEt,passwordEt,confirmPasswordEt;
     EditText facultyIdEt, facultyDesignationEt, usnEt;
     RadioButton studentRb,facultyRb;
+    RadioGroup usersRg;
     Button registerBtn;
     private String fullName,email,usn,facultyId,facultyDesignation;
     private String password,confirmPassword;
@@ -33,6 +35,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         studentRb = findViewById(R.id.student_rb);
         facultyRb = findViewById(R.id.faculty_rb);
+        usersRg = findViewById(R.id.user_rg);
 
         registerBtn = findViewById(R.id.register_btn);
 
