@@ -48,9 +48,8 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-
         ActionBar actionBar = this.getSupportActionBar();
-        if(actionBar!=null){
+        if(actionBar!= null){
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
@@ -75,7 +74,6 @@ public class RegistrationActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        //toolbar for back button
 
 
         facultyRb.setOnClickListener(new View.OnClickListener() {
@@ -220,8 +218,8 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()==R.id.home){
+    public boolean onOptionsItemSelected(MenuItem item){
+        if(item.getItemId()==android.R.id.home){
             NavUtils.navigateUpFromSameTask(this);
         }
         return super.onOptionsItemSelected(item);

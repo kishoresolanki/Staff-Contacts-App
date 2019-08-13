@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 usersRg.setVisibility(View.VISIBLE);
                 signInBtn.setVisibility(View.VISIBLE);
 
-                registerBtn.setVisibility(View.GONE);
+                registerBtn.setVisibility(View.VISIBLE);
                 loginBtn.setVisibility(View.GONE);
             }
         });
