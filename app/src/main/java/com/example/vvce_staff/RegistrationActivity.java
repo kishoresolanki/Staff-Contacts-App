@@ -3,9 +3,12 @@ package com.example.vvce_staff;
 import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,10 +28,12 @@ public class RegistrationActivity extends AppCompatActivity {
     EditText facultyIdEt, facultyDesignationEt, usnEt;
     RadioButton studentRb,facultyRb;
     Button registerBtn;
+    Toolbar back_tb;
     private String fullName,email,usn,facultyId,facultyDesignation;
     private String password,confirmPassword;
 
     private FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +56,13 @@ public class RegistrationActivity extends AppCompatActivity {
         registerBtn = findViewById(R.id.register_btn);
 
         mAuth = FirebaseAuth.getInstance();
+
+        //toolbar for back button
+        back_tb=findViewById(R.id.back);
+        setSupportActionBar(back_tb);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         facultyRb.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -191,6 +203,13 @@ public class RegistrationActivity extends AppCompatActivity {
 
             }
         });
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if(item.getItemId()==android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void createAccount(String email, String password, final String name){
