@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.example.vvce_staff.Departments;
@@ -61,9 +60,6 @@ public class DepartmentsActivity extends AppCompatActivity implements Department
         String clickedItem = " "+departments.get(position).getDepartmentName();
         mToast = Toast.makeText(this,clickedItem,Toast.LENGTH_SHORT);
         mToast.show();
-        //        intent = new Intent(ContactsActivity.this,ContactsActivity.class);
-        //        intent.putExtra("departmentClicked",clickedItem);
-        //        startActivity(intent);
     }
 
     @Override
@@ -72,6 +68,13 @@ public class DepartmentsActivity extends AppCompatActivity implements Department
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==R.id.SignOut){
+            Intent intent = new Intent(DepartmentsActivity.this,MainActivity.class);
+            startActivity(intent);
+        }
 
-
+        return true;
+    }
 }
