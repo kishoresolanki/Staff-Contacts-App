@@ -63,7 +63,6 @@ public class RegistrationActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
         facultyRb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
