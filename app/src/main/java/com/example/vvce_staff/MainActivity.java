@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.vvce_staff.networkUtils.DepartmentsActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -25,12 +26,17 @@ public class MainActivity extends AppCompatActivity {
     private String emailId,password;
     private int def_value;
 
+    TextInputLayout emailEtLayout,passEtLayout;
+
     private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        emailEtLayout = findViewById(R.id.email_et_layout);
+        passEtLayout = findViewById(R.id.pass_et_layout);
 
         emailEt = findViewById(R.id.email_et);
         passEt =  findViewById(R.id.password_et);
@@ -54,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                emailEt.setVisibility(View.VISIBLE);
-                passEt.setVisibility(View.VISIBLE);
+                emailEtLayout.setVisibility(View.VISIBLE);
+                passEtLayout.setVisibility(View.VISIBLE);
                 usersRg.setVisibility(View.VISIBLE);
                 signInBtn.setVisibility(View.VISIBLE);
 
@@ -95,7 +101,9 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Intent i = new Intent(MainActivity.this, DepartmentsActivity.class);
+                            i.putExtra("UserGroup",def_value);
                             startActivity(i);
+
                         } else{
                             Toast.makeText(MainActivity.this, "Invalid Email or Password", Toast.LENGTH_SHORT).show();
                         }

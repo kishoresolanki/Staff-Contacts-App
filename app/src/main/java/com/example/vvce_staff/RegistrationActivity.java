@@ -16,17 +16,22 @@ import android.widget.Toast;
 import com.example.vvce_staff.networkUtils.DepartmentsActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class RegistrationActivity extends AppCompatActivity {
+    TextInputLayout facultyIdLayout, facultyDesignationLayout, usnLayout;
     EditText fullNameEt,emailEt,passwordEt,confirmPasswordEt;
     EditText facultyIdEt, facultyDesignationEt, usnEt;
+
     RadioButton studentRb,facultyRb;
     RadioGroup usersRg;
+
     Button registerBtn;
+
     private String fullName,email,usn,facultyId,facultyDesignation;
     private String password,confirmPassword;
 
@@ -42,9 +47,12 @@ public class RegistrationActivity extends AppCompatActivity {
         passwordEt = findViewById(R.id.password_et);
         confirmPasswordEt = findViewById(R.id.confirm_password_et);
 
+        facultyIdLayout = findViewById(R.id.faculty_id_layout);
+        facultyDesignationLayout = findViewById(R.id.designation_layout);
         facultyIdEt = findViewById(R.id.faculty_id_et);
         facultyDesignationEt = findViewById(R.id.designation_et);
 
+        usnLayout = findViewById(R.id.usn_layout);
         usnEt = findViewById(R.id.usn_et);
 
         studentRb = findViewById(R.id.student_rb);
@@ -58,20 +66,20 @@ public class RegistrationActivity extends AppCompatActivity {
         facultyRb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                facultyDesignationEt.setVisibility(View.VISIBLE);
-                facultyIdEt.setVisibility(View.VISIBLE);
+                facultyDesignationLayout.setVisibility(View.VISIBLE);
+                facultyIdLayout.setVisibility(View.VISIBLE);
 
-                usnEt.setVisibility(View.GONE);
+                usnLayout.setVisibility(View.GONE);
             }
         });
 
         studentRb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                usnEt.setVisibility(View.VISIBLE);
+                usnLayout.setVisibility(View.VISIBLE);
 
-                facultyDesignationEt.setVisibility(View.GONE);
-                facultyIdEt.setVisibility(View.GONE);
+                facultyDesignationLayout.setVisibility(View.GONE);
+                facultyIdLayout.setVisibility(View.GONE);
             }
         });
 
