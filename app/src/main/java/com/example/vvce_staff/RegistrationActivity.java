@@ -57,7 +57,9 @@ public class RegistrationActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        //toolbar for back button
+        /*
+        toolbar for back button
+         */
         back_tb=findViewById(R.id.back);
         setSupportActionBar(back_tb);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
