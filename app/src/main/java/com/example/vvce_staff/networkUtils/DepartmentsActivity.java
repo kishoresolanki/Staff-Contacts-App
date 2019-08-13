@@ -23,6 +23,8 @@ public class DepartmentsActivity extends AppCompatActivity implements Department
     RecyclerView departmentListRV;
     private FirebaseAuth mAuth;
 
+    int userGroup;
+
     DepartmentsAdapter dAdapter;
 
     ArrayList<Departments> departments = new ArrayList<Departments>();
@@ -52,6 +54,11 @@ public class DepartmentsActivity extends AppCompatActivity implements Department
         departmentListRV.setLayoutManager(linearLayoutManager);
         departmentListRV.setAdapter(dAdapter);
         mAuth = FirebaseAuth.getInstance();
+
+        Intent intent = getIntent();
+        userGroup = intent.getIntExtra("UserGroup",1);
+
+
     }
 
     @Override

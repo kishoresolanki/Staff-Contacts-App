@@ -14,39 +14,60 @@
         android:layout_gravity="center"
         android:padding="30dp"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/login_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:text="@string/login"
         android:layout_margin="10dp"
         android:textAllCaps="true" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/register_btn"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/register"
         android:layout_margin="10dp"
         android:textAllCaps="true" />
 
-    <EditText
-        android:id="@+id/email_et"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/email_et_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:visibility="invisible"
-        android:hint="@string/email_hint"
-        android:inputType="textEmailAddress" />
+        android:layout_margin="10dp">
 
-    <EditText
-        android:id="@+id/password_et"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/email_hint"
+            android:inputType="textEmailAddress" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/pass_et_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:visibility="invisible"
-        android:hint="@string/password_hint"
-        android:inputType="textPassword" />
+        android:layout_margin="10dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pass_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/password_hint"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <RadioGroup
         android:id="@+id/user_rg"
@@ -71,12 +92,13 @@
             android:text="@string/student" />
     </RadioGroup>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/sign_in_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="invisible"
         android:layout_margin="10dp"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:text="@string/sign_in" />
 
 </LinearLayout>
