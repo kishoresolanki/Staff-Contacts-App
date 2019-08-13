@@ -8,10 +8,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:text="DEPARTMENT"
-        android:textSize="25dp"
+        android:textSize="22sp"
         android:padding="25dp"
         android:id="@+id/departmentTextView"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
         />
 
 </LinearLayout>

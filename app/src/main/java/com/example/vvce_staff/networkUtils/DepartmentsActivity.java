@@ -1,19 +1,28 @@
 package com.example.vvce_staff.networkUtils;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.vvce_staff.Departments;
 import com.example.vvce_staff.DepartmentsAdapter;
+import com.example.vvce_staff.MainActivity;
 import com.example.vvce_staff.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
 public class DepartmentsActivity extends AppCompatActivity implements DepartmentsAdapter.ListItemOnClickListener {
     RecyclerView departmentListRV;
+    private FirebaseAuth mAuth;
 
     DepartmentsAdapter dAdapter;
 
@@ -43,6 +52,7 @@ public class DepartmentsActivity extends AppCompatActivity implements Department
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         departmentListRV.setLayoutManager(linearLayoutManager);
         departmentListRV.setAdapter(dAdapter);
+        mAuth = FirebaseAuth.getInstance();
     }
 
     @Override
@@ -55,4 +65,13 @@ public class DepartmentsActivity extends AppCompatActivity implements Department
         //        intent.putExtra("departmentClicked",clickedItem);
         //        startActivity(intent);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.departments_menu,menu);
+        return true;
+    }
+
+
+
 }
