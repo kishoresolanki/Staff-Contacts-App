@@ -1,6 +1,7 @@
 package com.example.vvce_staff;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,11 +10,19 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MainActivity extends AppCompatActivity {
     EditText emailEt,passEt;
     RadioGroup usersRg;
     Button loginBtn,registerBtn,signInBtn;
     private String emailId,password;
+
+    private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
         loginBtn = findViewById(R.id.login_btn);
         registerBtn = findViewById(R.id.register_btn);
         signInBtn = findViewById(R.id.sign_in_btn);
+
+        mAuth = FirebaseAuth.getInstance();
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,8 +55,7 @@ public class MainActivity extends AppCompatActivity {
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this,RegistrationActivity.class);
-                startActivity(i);
+                signIn(emailId, password);
             }
         });
 
@@ -63,5 +73,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void signIn(String email, String password){
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            Intent i = new Intent(MainActivity.this,RegistrationActivity.class);
+                            startActivity(i);
+                        } else{
+                            Toast.makeText(MainActivity.this, "Invalid Email or Password", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
 
 }
