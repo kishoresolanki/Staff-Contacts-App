@@ -2,8 +2,10 @@ package com.example.vvce_staff;
 
 import android.content.Intent;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NavUtils;
 
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -34,7 +36,7 @@ public class RegistrationActivity extends AppCompatActivity {
     RadioGroup usersRg;
 
     Button registerBtn;
-   Toolbar back_tb;
+
 
     private String fullName,email,usn,facultyId,facultyDesignation;
     private String password,confirmPassword;
@@ -46,6 +48,11 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+
+        ActionBar actionBar = this.getSupportActionBar();
+        if(actionBar!=null){
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         fullNameEt = findViewById(R.id.full_name_et);
         emailEt = findViewById(R.id.email_et);
@@ -69,10 +76,7 @@ public class RegistrationActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         //toolbar for back button
-        back_tb=findViewById(R.id.back);
-        setSupportActionBar(back_tb);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         facultyRb.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -216,9 +220,9 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        if(item.getItemId()==android.R.id.home){
-            finish();
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==R.id.home){
+            NavUtils.navigateUpFromSameTask(this);
         }
         return super.onOptionsItemSelected(item);
     }

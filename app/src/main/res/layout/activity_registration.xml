@@ -6,11 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".RegistrationActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/back"
-        ></androidx.appcompat.widget.Toolbar>
+
     <RadioGroup
         android:id="@+id/user_rg"
         android:layout_width="match_parent"
