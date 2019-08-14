@@ -1,5 +1,6 @@
 package com.example.vvce_staff.networkUtils;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -78,6 +79,15 @@ public class DepartmentsActivity extends AppCompatActivity implements Department
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId()==R.id.SignOut){
+            mAuth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+                @Override
+                public void onAuthStateChanged( FirebaseAuth firebaseAuth) {
+                    if(mAuth.getCurrentUser()==null){
+                        startActivity(new Intent(DepartmentsActivity.this,MainActivity.class));
+                        finish();
+                    }
+                }
+            });
             Intent intent = new Intent(DepartmentsActivity.this,MainActivity.class);
             startActivity(intent);
         }
