@@ -22,10 +22,6 @@ import com.example.vvce_staff.networkUtils.DepartmentsActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class RegistrationActivity extends AppCompatActivity {
     TextInputLayout facultyIdLayout, facultyDesignationLayout, usnLayout;
@@ -41,7 +37,6 @@ public class RegistrationActivity extends AppCompatActivity {
     private String fullName,email,usn,facultyId,facultyDesignation;
     private String password,confirmPassword;
 
-    private FirebaseAuth mAuth;
 
 
     @Override
@@ -72,7 +67,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         registerBtn = findViewById(R.id.register_btn);
 
-        mAuth = FirebaseAuth.getInstance();
+
 
 
 
@@ -155,7 +150,6 @@ public class RegistrationActivity extends AppCompatActivity {
                                 Toast.makeText(RegistrationActivity.this, "enter password", Toast.LENGTH_SHORT).show();
                             }else if(!TextUtils.isEmpty(password)){
                             if(password.equals(confirmPassword)){
-                                createAccount(email, password, fullName);
                                 Intent intent = new Intent(RegistrationActivity.this, DepartmentsActivity.class);
                                 startActivity(intent);
                             }
@@ -194,7 +188,7 @@ public class RegistrationActivity extends AppCompatActivity {
                                         Toast.makeText(RegistrationActivity.this, "enter password", Toast.LENGTH_SHORT).show();
                                     } else if (!TextUtils.isEmpty(password)) {
                                         if (password.equals(confirmPassword)) {
-                                            createAccount(email, password, fullName);
+
                                             Intent intent = new Intent(RegistrationActivity.this, DepartmentsActivity.class);
                                             startActivity(intent);
                                         }
@@ -223,25 +217,6 @@ public class RegistrationActivity extends AppCompatActivity {
             NavUtils.navigateUpFromSameTask(this);
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private void createAccount(String email, String password, final String name){
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                            FirebaseUser user = mAuth.getCurrentUser();
-
-                            UserProfileChangeRequest profileUpdate = new UserProfileChangeRequest.Builder()
-                                    .setDisplayName(name).
-                                    build();
-                            user.updateProfile(profileUpdate);
-                        } else{
-                            Toast.makeText(RegistrationActivity.this, "Registration Unsuccessful", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
     }
 
 }

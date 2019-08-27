@@ -15,8 +15,6 @@ import com.example.vvce_staff.networkUtils.DepartmentsActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
     EditText emailEt,passEt;
@@ -28,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
 
     TextInputLayout emailEtLayout,passEtLayout;
 
-    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         studentRB = findViewById(R.id.student_rb);
         FacultyRB = findViewById(R.id.faculty_rb);
 
-        mAuth = FirebaseAuth.getInstance();
         if(studentRB.isChecked()){
             def_value = 1;
         }
@@ -85,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
                     emailId = emailEt.getText().toString();
                     password = passEt.getText().toString();
 
-                    signIn(emailId, password);
                 } catch (Exception e){
                     Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
                 }
@@ -94,21 +89,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void signIn(String email, String password){
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Intent i = new Intent(MainActivity.this, DepartmentsActivity.class);
-                            i.putExtra("UserGroup",def_value);
-                            startActivity(i);
 
-                        } else{
-                            Toast.makeText(MainActivity.this, "Invalid Email or Password", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
 
 }
