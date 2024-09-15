@@ -17,5 +17,6 @@
     <string name="usn_hint">USN</string>
     <string name="Departments">DEPARTMENTS</string>
     <string name="Register_activity">REGISTER</string>
+    <string name="sign_out">Sign Out</string>
 
 </resources>

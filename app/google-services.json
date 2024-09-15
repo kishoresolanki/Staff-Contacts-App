@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "990986695627",
+    "firebase_url": "https://vvcestaff.firebaseio.com",
+    "project_id": "vvcestaff",
+    "storage_bucket": "vvcestaff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:990986695627:android:ea874bf3b3bfe962",
+        "android_client_info": {
+          "package_name": "com.example.vvce_staff"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "990986695627-p530cocm1r8gpt27r4mioua9o0ruj3mn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vvce_staff",
+            "certificate_hash": "fd6b46f547459432c339738bc0d9d5e0b60194ef"
+          }
+        },
+        {
+          "client_id": "990986695627-qmqa4l0pk26724rnvm41ibfb93a66sl6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vvce_staff",
+            "certificate_hash": "cb3a66500b882c1f44777e8d7783b866eeec59c5"
+          }
+        },
+        {
+          "client_id": "990986695627-dlkmhke19ivel233mhft9ptikigjjad0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJTkHAzxIGDkS_8DueZjcM5jVDR-qoEnQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "990986695627-dlkmhke19ivel233mhft9ptikigjjad0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

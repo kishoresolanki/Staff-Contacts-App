@@ -1,63 +1,93 @@
 package com.example.vvce_staff;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NavUtils;
+
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.vvce_staff.networkUtils.DepartmentsActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class RegistrationActivity extends AppCompatActivity {
+    TextInputLayout facultyIdLayout, facultyDesignationLayout, usnLayout;
     EditText fullNameEt,emailEt,passwordEt,confirmPasswordEt;
     EditText facultyIdEt, facultyDesignationEt, usnEt;
+
     RadioButton studentRb,facultyRb;
+    RadioGroup usersRg;
+
     Button registerBtn;
+
+
     private String fullName,email,usn,facultyId,facultyDesignation;
     private String password,confirmPassword;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+        ActionBar actionBar = this.getSupportActionBar();
+        if(actionBar!= null){
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         fullNameEt = findViewById(R.id.full_name_et);
         emailEt = findViewById(R.id.email_et);
         passwordEt = findViewById(R.id.password_et);
         confirmPasswordEt = findViewById(R.id.confirm_password_et);
 
+        facultyIdLayout = findViewById(R.id.faculty_id_layout);
+        facultyDesignationLayout = findViewById(R.id.designation_layout);
         facultyIdEt = findViewById(R.id.faculty_id_et);
         facultyDesignationEt = findViewById(R.id.designation_et);
 
+        usnLayout = findViewById(R.id.usn_layout);
         usnEt = findViewById(R.id.usn_et);
 
         studentRb = findViewById(R.id.student_rb);
         facultyRb = findViewById(R.id.faculty_rb);
+        usersRg = findViewById(R.id.user_rg);
 
         registerBtn = findViewById(R.id.register_btn);
+
+
+
+
 
         facultyRb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                facultyDesignationEt.setVisibility(View.VISIBLE);
-                facultyIdEt.setVisibility(View.VISIBLE);
+                facultyDesignationLayout.setVisibility(View.VISIBLE);
+                facultyIdLayout.setVisibility(View.VISIBLE);
 
-                usnEt.setVisibility(View.GONE);
+                usnLayout.setVisibility(View.GONE);
             }
         });
 
         studentRb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                usnEt.setVisibility(View.VISIBLE);
+                usnLayout.setVisibility(View.VISIBLE);
 
-                facultyDesignationEt.setVisibility(View.GONE);
-                facultyIdEt.setVisibility(View.GONE);
+                facultyDesignationLayout.setVisibility(View.GONE);
+                facultyIdLayout.setVisibility(View.GONE);
             }
         });
 
@@ -158,6 +188,7 @@ public class RegistrationActivity extends AppCompatActivity {
                                         Toast.makeText(RegistrationActivity.this, "enter password", Toast.LENGTH_SHORT).show();
                                     } else if (!TextUtils.isEmpty(password)) {
                                         if (password.equals(confirmPassword)) {
+
                                             Intent intent = new Intent(RegistrationActivity.this, DepartmentsActivity.class);
                                             startActivity(intent);
                                         }
@@ -180,5 +211,13 @@ public class RegistrationActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if(item.getItemId()==android.R.id.home){
+            NavUtils.navigateUpFromSameTask(this);
+        }
+        return super.onOptionsItemSelected(item);
     }
+
+}
 
